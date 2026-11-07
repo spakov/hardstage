@@ -1,0 +1,10 @@
+[Unit]
+Description=Refresh the hardstage backup staging directory periodically
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=5m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

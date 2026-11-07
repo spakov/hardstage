@@ -1,0 +1,8 @@
+[Unit]
+Description=Refresh the hardstage backup staging directory
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/hardstage
+Nice=10
+IOSchedulingClass=idle

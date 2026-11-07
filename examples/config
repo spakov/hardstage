@@ -1,0 +1,39 @@
+# hardstage configuration
+#
+# Each line names something under your home directory to stage. Paths are
+# relative to ~ ("/foo" and "~/foo" mean the same as "foo"). Directories are
+# included with everything beneath them.
+#
+#   path            include a file or directory, e.g.  .config/Trolltech.conf
+#   !pattern        exclude. Without a "/" it matches a name at any depth
+#                   (e.g. !*.tmp or !Cache/); with one it is relative to ~.
+#   pattern/        a trailing "/" matches directories only
+#   * ? [abc] **    glob syntax, as in .gitignore
+#   @target PATH    where to build the staging tree (default ~/Backup)
+#   @keep PATTERN   a path inside the target that hardstage must never delete,
+#                   e.g. a sync client's state directory: @keep .stfolder
+#
+# When several lines match, the last one wins: put broad includes first and
+# exceptions after them.
+
+@target ~/Backup
+
+# ---- examples: uncomment and adapt ----
+
+# A single file
+#.config/Trolltech.conf
+
+# Thunderbird mail and settings, minus lock files
+#.thunderbird/
+#!.thunderbird/*/lock
+#!.thunderbird/*/.parentlock
+
+# Firefox profiles, minus crash reports and lock files
+#.mozilla/firefox/
+#!.mozilla/firefox/Crash Reports/
+#!.mozilla/firefox/*/lock
+#!.mozilla/firefox/*/.parentlock
+
+# Photos, minus thumbnail caches
+#Pictures/
+#!.thumbnails/
